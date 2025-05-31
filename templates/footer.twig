@@ -1,0 +1,85 @@
+<!-- FOOTER START -->
+<div class="bloc none d-bloc lb-background-2" id="footer">
+	<div class="container bloc-sm-sm bloc-sm bloc-sm-md bloc-sm-lg">
+		<div class="row lb-bloc-padding-10">
+
+			<div class="col-12 col-lg-3 col-md-4 align-self-start col-sm-6 lb-bloc-padding-5 order-lg-0 offset-lg-0">
+				<div class="row">
+
+					<div class="col-lg-12">
+						<h4 class="lb-footer-title mg-clear mb-1 mb-lg-1">
+							{{ getThisProjectName }}
+						</h4>
+					</div>
+
+					<div class="col-lg-12">
+						<a href="https://github.com/LinkBridge-ru" class="a-btn a-block lb-footer-subtitle lb-hover">
+							{{ "GitHub" }}
+						</a>
+						<a href="{{ path("support") }}" class="a-btn a-block lb-footer-subtitle lb-hover">
+							{{ "Support"|trans }}
+						</a>
+						<a href="https://apps.apple.com/app/id1643756169" rel="nofollow noopener noreferrer"
+						   class="a-btn a-block lb-footer-subtitle lb-hover" target="_blank">
+							{{ "LinkBridge for iOS"|trans }}
+						</a>
+						<a href="{{ path("policy") }}" class="a-btn a-block lb-footer-subtitle lb-hover">
+							{{ "Privacy Policy"|trans }}
+						</a>
+						<a href="{{ path("policy_ios") }}" class="a-btn a-block lb-footer-subtitle lb-hover">
+							{{ "Privacy Policy"|trans }} iOS
+						</a>
+						<a href="{{ path("terms_ios") }}" class="a-btn a-block lb-footer-subtitle lb-hover">
+							{{ "Terms"|trans }} iOS
+						</a>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-3 col-md-4 align-self-start col-sm-6 lb-bloc-padding-5 offset-lg-0">
+				<div class="row">
+
+					<div class="col-lg-12">
+						<h4 class="lb-footer-title mg-clear mb-lg-1 mb-1">
+							{{ "Languages"|trans }}
+						</h4>
+					</div>
+
+					<div class="col-lg-12">
+						<a href="{{ path("change_language", {locale: "en"}) }}"
+						   class="a-btn a-block lb-footer-subtitle lb-hover">English</a>
+						<a href="{{ path("change_language", {locale: "ru"}) }}"
+						   class="a-btn a-block lb-footer-subtitle lb-hover">Русский</a>
+						<a href="{{ path("change_language", {locale: "be"}) }}"
+						   class="a-btn a-block lb-footer-subtitle lb-hover">Беларускі</a>
+						<a href="{{ path("change_language", {locale: "kk"}) }}"
+						   class="a-btn a-block lb-footer-subtitle lb-hover">Қазақша</a>
+						<a href="{{ path("change_language", {locale: "de"}) }}"
+						   class="a-btn a-block lb-footer-subtitle lb-hover">Deutsch</a>
+						<a href="{{ path("change_language", {locale: "it"}) }}"
+						   class="a-btn a-block lb-footer-subtitle lb-hover">Italiano</a>
+						<a href="{{ path("change_language", {locale: "hy"}) }}"
+						   class="a-btn a-block lb-footer-subtitle lb-hover">Հայերեն</a>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="offset-lg-0 col-lg-12 lb-footer-padding-15 col-md-12 col-sm-12 col-12">
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<p class="lb-descriptions">
+							© 2018 -> {{ getCurrentYear }} – LinkBridge
+							<a class="lb-text-accent" href="https://github.com/LinkBridge-ru" target="_blank">
+								v.{{ getThisProjectVersion }} {{ getThisProjectBuildType }}
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- FOOTER END -->

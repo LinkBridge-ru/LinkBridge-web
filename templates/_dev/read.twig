@@ -1,0 +1,30 @@
+<a href="{{ path("_dev_write") }}">Write</a> | <a href="{{ path("_dev_wipe") }}">Wipe DB</a>
+<hr>
+{% for message in app.flashes("success") %}<div style="color: green;">{{ message }}</div>{% endfor %}
+<form method="post">
+	<button type="submit">Save</button>
+	<table border="1">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Registered At</th>
+			<th>SSID</th>
+			<th>PIN</th>
+			<th>URL</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for record in records %}
+			<tr>
+				<td>{{ record.id }}<input type="hidden" name="records[{{ record.id }}][id]" value="{{ record.id }}"></td>
+				<td>{{ record.registeredAt|date("d.m.Y - H:i:s") }}</td>
+				<td><input type="text" name="records[{{ record.id }}][sessionId]" value="{{ record.sessionId }}"></td>
+				<td><input type="text" name="records[{{ record.id }}][pin]" value="{{ record.pin }}"></td>
+				<td><input type="text" name="records[{{ record.id }}][url]" value="{{ record.url }}"></td>
+			</tr>
+		{% else %}
+			<tr><td colspan="5">DB is empty</td></tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</form>

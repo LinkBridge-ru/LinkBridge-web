@@ -1,0 +1,6 @@
+{% extends "base.html.twig" %}
+{% set TITLE = "Privacy Policy"|trans %}
+{% block title %}{{ getThisProjectName }} ≈ {{ TITLE }}{% endblock %}
+{% block navbar %}{% include "navbar.twig" %}{% endblock %}
+{% block body %}{% include "policy/content.twig" %}{% endblock %}
+{% block footer %}{% include "footer.twig" %}{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% set TITLE = "Share Links Easy!"|trans %}
+{% set DESCRIPTION = "LinkBridge is a service that allows you to send a link from your device to any other device with a browser."|trans %}
+{% set KEYWORDS = "link, linkbridge, send, free, pin, scan, сканер, privacy, bridge, linkbridge, линкбридж, отправить, ссылку, qr, сканировать, бесплатно" %}
+
+{% block KEYWORDS %}<meta name="keywords" content="{{ KEYWORDS }}">{% endblock %}
+{% block DESCRIPTION %}<meta name="description" content="{{ DESCRIPTION }}">{% endblock %}
+
+{% block OpenGraph %}
+	<meta content="{{ TITLE }}" name="twitter:title">
+	<meta content="summary_large_image" name="twitter:card">
+	<meta content="{{ DESCRIPTION }}" name="twitter:description">
+	<meta content="{{ asset("assets/img/poster.jpeg") }}" name="twitter:image">
+	<meta property="og:url" content="{{ app.request.scheme ~ "://" ~ app.request.host }}">
+	<meta property="og:site_name" content="{{ getThisProjectName }}">
+	<meta property="og:description" content="{{ DESCRIPTION }}">
+	<meta property="og:title" content="{{ getThisProjectName }}: {{ TITLE }}">
+	<meta property="og:type" content="website">
+{% endblock %}
+
+{% block title %}{{ getThisProjectName }} ≈ {{ TITLE }}{% endblock %}
+{% block Analytics %}<!-- yaMetrika --> <script type="text/javascript" id="yaMetrika"> (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym"); ym(54047479, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/54047479" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- yaMetrika END -->{% endblock %}
+
+{% block navbar %}{% include "navbar.twig" %}{% endblock %}
+{% block body %}{% include "home/content.twig" %}{% endblock %}
+{% block footer %}
+	{% include "footer.twig" %}
+	<script src="{{ asset("assets/LinkBridge.js") }}"></script>
+	<script type="application/javascript">
+		if (document.getElementById("LinkBridgeFetch")) LinkBridgeFetchLink('{{ PIN }}');
+	</script>
+{% endblock %}

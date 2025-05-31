@@ -1,0 +1,55 @@
+<div class="bloc bloc-fill-screen l-bloc lb-background" id="LinkBridgeSender">
+
+	<div class="container fill-bloc-top-edge">
+		<div class="row">
+			<div class="col-12">
+				<nav class="navbar row navbar-expand-md">
+					<div class="container-fluid">
+						<a class="navbar-brand text-uppercase font-logo" href="{{ path("home") }}">
+							{{ getThisProjectName }}
+						</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<form class="col text-center text-md-start">
+				<div class="form-group mb-lg-1 mb-md-1 mb-sm-1 mb-1">
+					<h3 class="mg-clear text-uppercase lb-text-accent">
+						<span id="Recipient">{{ "Recipient"|trans }}:</span>
+						<span class="bold">{{ PIN|splitCode }}</span>
+					</h3>
+				</div>
+
+				<div class="form-group mb-3">
+					<div id="BridgeAlert"></div>
+
+					{% set alert_types = ["info", "success", "warning", "danger"] %}
+
+					{% for type in alert_types %}
+						{% for message in app.flashes(type) %}
+							<div class="col-lg-12 text-lg-start animated vanishIn" data-appear-anim-style="vanishIn">
+								<p class="lb-alert-{{ type }} h4 text-uppercase">{{ message|trans }}</p>
+							</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+
+				<div class="form-group mb-3">
+					<input value="{{ PIN }}" id="pin" name="pin" type="hidden"/>
+					<label class="form-label lb-label text-uppercase lb-text-accent"
+						   for="url">{{ "And now insert the link"|trans }}</label>
+					<input id="url" name="url" class="form-control lb-form" autocomplete="off" inputmode="url"
+						   autofocus="autofocus" placeholder="https:// ..." required/>
+				</div>
+
+				<button class="btn btn-d w-100 btn-sm text-uppercase lb-form"
+						id="send-button">{{ "Send"|trans }}</button>
+			</form>
+		</div>
+	</div>
+
+</div>

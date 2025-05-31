@@ -1,0 +1,15 @@
+<a href="{{ path("_dev_read") }}">Read</a> | <a href="{{ path("_dev_wipe") }}">Wipe DB</a>
+<hr>
+{% for message in app.flashes("success") %}
+	<div style="color: green;">{{ message }}</div>
+{% endfor %}
+
+{% for message in app.flashes("danger") %}
+	<div style="color: red;">{{ message }}</div>
+{% endfor %}
+
+<form method="post">
+	<label>PIN: <input type="number" name="pin" required></label><br>
+	<label>URL: <input type="text" name="url"></label><br>
+	<button type="submit">Save</button>
+</form>

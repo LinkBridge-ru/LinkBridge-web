@@ -1,0 +1,178 @@
+<div class="bloc none l-bloc lb-background" id="LinkBridgeFetch">
+	<div class="container bloc-lg-lg">
+
+		<div class="row">
+
+			<div class="text-center text-md-start text-lg-center col-md-6 col-lg-5 align-self-center lb-bloc-padding-10 order-lg-0 offset-lg-1">
+
+				<img id="LB_QR"
+					 src="{{ getQRCode(app.request.scheme ~ "://" ~ app.request.host ~ "/send/?pin=" ~ PIN) ?: asset("assets/img/unavailable.png") }}"
+					 class="img-fluid lb-qr-background lb-qr-round mx-auto d-block" alt="{{ "Scan this QR"|trans }}"/>
+
+				<img id="LB_QR_INVALID" src="{{ asset("assets/img/unavailable.png") }}"
+					 class="img-fluid lb-qr-background lb-qr-round mx-auto d-block d-none"
+					 alt="{{ "Scan this QR"|trans }}"/>
+
+			</div>
+
+			<div class="text-center text-md-start align-self-center text-lg-start col-md-6 col-lg-6 lb-bloc-padding-10">
+				<div class="row">
+
+					<div class="col-lg-12 text-lg-start lb-bloc-padding-10">
+
+						<h3 id="LB_PIN" class="float-md-none text-md-start mg-clear">
+							<span id="pin-copy" class="lb-pin-copy cursor-pointer"
+								  title="{{ "Click to Copy"|trans }}" data-original-title="{{ "Click to Copy"|trans }}"
+								  data-copied-title="{{ "Copied"|trans }}" onclick="copy('#pin-copy');">
+								{{ PIN|splitCode }}
+							</span>
+						</h3>
+
+						<h3 id="LB_PIN_TimeOut" class="float-md-none text-md-center mg-clear d-none">
+							<span class="lb-pin-copy">
+								{{ "Time-Out" }}
+							</span>
+						</h3>
+
+						<h6 id="LB_PIN_Description" class="lb-pin-description lb-text-accent">
+							{{ "This is your code to get the link."|trans }}
+							<br>
+							{{ "Provide this code to the sender."|trans }}
+						</h6>
+
+						<h6 id="LB_PIN_Description_TimeOut" class="lb-alert-danger d-none">
+							{{ "The waiting time for the link has expired."|trans }}
+							<br>
+							{{ "When you are ready to receive the link, refresh the page and try again!"|trans }}
+						</h6>
+
+						<h6 class="mg-clear lb-pin-description lb-text-accent">
+							{{ "To send, enter the recipient PIN and paste the link."|trans }}
+						</h6>
+
+					</div>
+
+					<div id="BridgeAlert"></div>
+
+					{% set alert_types = ["info", "success", "warning", "danger"] %}
+					{% for type in alert_types %}
+						{% for message in app.flashes(type) %}
+							<div class="col-lg-12 text-lg-start animated vanishIn" data-appear-anim-style="vanishIn">
+								<p class="h4 text-uppercase lb-alert-{{ type }}">{{ message|trans }}</p>
+							</div>
+						{% endfor %}
+					{% endfor %}
+
+					<form action="{{ path("send") }}" class="col-lg-12 lb-bloc-padding-10" id="LinkBridgeSender">
+						<div class="form-group mb-3">
+							<label class="form-label lb-label" for="pin">{{ "Code"|trans }}</label>
+							<input id="pin" class="form-control lb-form lb-pin-form LinkBridge-PIN-Extended"
+								   autocomplete="off" autofocus="autofocus" name="pin" inputmode="numeric" required/>
+						</div>
+						<div class="form-group mb-3">
+							<label class="form-label lb-label" for="url">{{ "Link"|trans }}</label>
+							<input id="url" class="form-control lb-form" autocomplete="off" name="url" required/>
+						</div>
+						<div class="form-group mb-3 lb-bloc-padding-5">
+							<button class="btn btn-d btn-sm w-100 lb-form" id="send-button" type="submit">
+								<span class="text-uppercase">
+									{{ "Send"|trans }}
+								</span>
+							</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="bloc none l-bloc lb-background-2" id="how-to">
+	<div class="container bloc-lg-lg bloc-md-md bloc-sm-sm bloc-sm">
+		<div class="row">
+			<div class="col-12 lb-bloc-padding-5">
+				<div class="row">
+
+					<div class="col-md-4 col-sm-4 col-6 col-lg-2">
+						<div class="text-center lb-bloc-padding-10">
+							<span class="lb-how-to-icon icon-lg fa fa-qrcode"></span>
+						</div>
+						<h3 class="text-center lb-title mb-lg-2 mt-lg-1">
+							{{ "Scan QR"|trans }}
+						</h3>
+						<p class="text-center mg-clear lb-descriptions">
+							{{ "Scan the QR Code with any available application for your device and feel free to send the link!"|trans }}
+						</p>
+					</div>
+
+					<div class="col-md-4 col-lg-2 col-sm-4 col-6">
+						<div class="text-center lb-bloc-padding-10">
+							<span class="lb-how-to-icon icon-lg fa fa-mobile"></span>
+						</div>
+						<h3 class="text-center lb-title mb-lg-2 mt-lg-1">
+							{{ "Application"|trans }}
+						</h3>
+						<p class="text-center mg-clear lb-descriptions">
+							{{ "There is not need to download our app. Any QR Code scanner will do the job!"|trans }}
+						</p>
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-6 col-lg-2">
+						<div class="text-center lb-bloc-padding-10">
+							<span class="lb-how-to-icon icon-lg fa fa-key"></span>
+						</div>
+						<h3 class="text-center lb-title mb-lg-2 mt-lg-1">
+							{{ "Use PIN"|trans }}
+						</h3>
+						<p class="text-center mg-clear lb-descriptions">
+							{{ "If it is not possible to use the camera, we have developed a one-time password system."|trans }}
+						</p>
+					</div>
+
+					<div class="col-md-4 col-lg-2 col-sm-4 col-6">
+						<div class="text-center lb-bloc-padding-10">
+							<span class="lb-how-to-icon icon-lg fa fa-shield-alt"></span>
+						</div>
+						<h3 class="text-center lb-title mb-lg-2 h3-style mt-lg-1">
+							{{ "Security"|trans }}
+						</h3>
+						<p class="text-center mg-clear lb-descriptions">
+							{{ "LinkBridge is secure and works like a bridge between our server and your device."|trans }}
+						</p>
+					</div>
+
+					<div class="col-md-4 col-lg-2 col-sm-4 col-6">
+						<div class="text-center lb-bloc-padding-10">
+							<span class="lb-how-to-icon icon-lg fa fa-sign-in-alt"></span>
+						</div>
+						<h3 class="text-center lb-title mb-lg-2 mt-lg-1">
+							{{ "Authorization"|trans }}
+						</h3>
+						<p class="text-center mg-clear lb-descriptions">
+							{{ "There is no need to authorise on our website."|trans }}
+							<br>
+							{{ "Everything is free and unlimited."|trans }}
+						</p>
+					</div>
+
+					<div class="col-6 col-lg-2 col-md-4 col-sm-4">
+						<div class="text-center lb-bloc-padding-10">
+							<span class="lb-how-to-icon icon-lg fa fa-check"></span>
+						</div>
+						<h3 class="text-center lb-title mb-lg-2 mt-lg-1">
+							{{ "Well, done!"|trans }}
+						</h3>
+						<p class="text-center mg-clear lb-descriptions">
+							{{ "Now you know how to use LinkBridge!"|trans }}
+							<br>
+							{{ "See you around!"|trans }}
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

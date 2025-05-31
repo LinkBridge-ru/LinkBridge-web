@@ -1,0 +1,5 @@
+{% extends "base.html.twig" %}
+{% set TITLE = "Support"|trans %}
+{% block title %}{{ getThisProjectName }} ≈ {{ TITLE }}{% endblock %}
+{% block body %}{% include "support/content.twig" %}{% endblock %}
+{% block footer %}{% include "footer.twig" %}{% endblock %}

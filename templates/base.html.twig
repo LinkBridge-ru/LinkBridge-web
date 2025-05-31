@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ getLang }}">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	{% block DESCRIPTION %}<!-- DESCRIPTION -->{% endblock %}
+	{% block KEYWORDS %}<!-- KEYWORDS -->{% endblock %}
+	{% block OpenGraph %}<!-- OpenGraph -->{% endblock %}
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset("assets/img/apple-touch-icon.png") }}"/>
+	<link rel="shortcut icon" type="image/png" href="{{ asset("favicon.png") }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset("assets/style.css") }}">
+	<title>{% block title %}LinkBridge{% endblock %}</title>
+</head>
+<body class="mob-disable-anim">
+
+<div class="page-container">
+	{% block navbar %}{% endblock %}
+	{% block body %}{% endblock %}
+	{% block footer %}{% endblock %}
+</div>
+
+<script src="{{ asset("assets/all.js") }}"></script>
+{% block Analytics %}<!-- Analytics -->{% endblock %}
+</body>
+</html>
