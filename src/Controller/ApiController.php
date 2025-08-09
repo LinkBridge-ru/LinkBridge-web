@@ -129,16 +129,16 @@ final class ApiController extends AbstractController
 	#[Route(["/api/send", "/api/send/2"], name: "api_send_2", methods: ["POST"])]
 	public function api_send_2(Request $request): Response
 	{
-		$pin = $request->get(key: "pin");
-		$url = $request->get(key: "url");
+		$data = $request->toArray();
+		$pin = $data["pin"] ?? null;
+		$url = $data["url"] ?? null;
 
 		try {
 			$pin = $this->LinkBridge->sanitizePinCode($pin);
 			$url = $this->LinkBridge->sanitizeUrl($url);
 
 			foreach (["pin", "url"] as $key) {
-				$param = $request->get($key);
-				if (empty($param)) throw new Exception("param `$key` cannot be empty.", 400);
+				if (empty($data[$key])) throw new Exception("param `$key` cannot be empty.", 400);
 			}
 
 			$this->LinkBridgeRepo->writeLinkForRecipient($pin, $url);
