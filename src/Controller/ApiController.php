@@ -136,10 +136,10 @@ final class ApiController extends AbstractController
 			$pin = $this->LinkBridge->sanitizePinCode($pin);
 			$url = $this->LinkBridge->sanitizeUrl($url);
 
-			if (empty($pin) || empty($url)) throw new Exception(
-				message: "`pin` and `url` params cannot be empty",
-				code: Response::HTTP_BAD_REQUEST,
-			);
+			foreach (["pin", "url"] as $key) {
+				$param = $request->get($key);
+				if (empty($param)) throw new Exception("param `$key` cannot be empty.", 400);
+			}
 
 			$this->LinkBridgeRepo->writeLinkForRecipient($pin, $url);
 			$status = Response::HTTP_ACCEPTED;
