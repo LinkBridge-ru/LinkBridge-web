@@ -126,7 +126,7 @@ final class ApiController extends AbstractController
 		);
 	}
 
-	#[Route("/api/send/2", name: "api_send_2", methods: ["POST"])]
+	#[Route(["/api/send", "/api/send/2"], name: "api_send_2", methods: ["POST"])]
 	public function api_send_2(Request $request): Response
 	{
 		$pin = $request->get(key: "pin");
