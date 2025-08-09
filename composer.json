@@ -8,20 +8,20 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/cache": "^2.2",
-        "doctrine/doctrine-bundle": "^2.14",
+        "doctrine/doctrine-bundle": "^2.15.1",
         "doctrine/doctrine-migrations-bundle": "^3.4.2",
-        "doctrine/orm": "^3.3.3",
+        "doctrine/orm": "^3.5.2",
         "doctrine/sql-formatter": "^1.5.2",
-        "symfony/asset": "7.2.*",
-        "symfony/console": "7.2.*",
-        "symfony/doctrine-bridge": "7.2.*",
-        "symfony/dotenv": "7.2.*",
-        "symfony/flex": "^2.7.1",
-        "symfony/framework-bundle": "7.2.*",
-        "symfony/runtime": "7.2.*",
-        "symfony/translation": "7.2.*",
-        "symfony/twig-bundle": "7.2.*",
-        "symfony/yaml": "7.2.*",
+        "symfony/asset": "7.3.*",
+        "symfony/console": "7.3.*",
+        "symfony/doctrine-bridge": "7.3.*",
+        "symfony/dotenv": "7.3.*",
+        "symfony/flex": "^2.8.1",
+        "symfony/framework-bundle": "7.3.*",
+        "symfony/runtime": "7.3.*",
+        "symfony/translation": "7.3.*",
+        "symfony/twig-bundle": "7.3.*",
+        "symfony/yaml": "7.3.*",
         "twig/extra-bundle": "^3.21",
         "twig/twig": "^3.21.1"
     },
@@ -72,13 +72,13 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.2.*",
+            "require": "7.3.*",
             "docker": false
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.63",
-        "symfony/stopwatch": "7.2.*",
-        "symfony/web-profiler-bundle": "7.2.*"
+        "symfony/maker-bundle": "^1.64",
+        "symfony/stopwatch": "7.3.*",
+        "symfony/web-profiler-bundle": "7.3.*"
     }
 }
