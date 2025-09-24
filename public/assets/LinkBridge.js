@@ -27,6 +27,9 @@ class API {
 
 const api = new API();
 const formData = new FormData();
+const getBaseUrl = (path = "") => {
+	return window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "") + path;
+};
 
 /**
  * Метод ожидает ссылку.
@@ -44,7 +47,7 @@ function LinkBridgeFetchLink(pin) {
 		return url.toString();
 	};
 
-	const baseUrl = window.location.protocol + "//" + window.location.hostname + "/api/check";
+	const baseUrl = getBaseUrl("/api/check");
 	const params = {pin};
 
 	const intervalId = setInterval(() => {
@@ -102,7 +105,7 @@ function LinkBridgeSendLink() {
 			formData.append("pin", pinInput.value);
 			formData.append("url", urlInput.value);
 
-			api.sendRequest(window.location.protocol + "//" + window.location.hostname + "/api/send/2", "POST", formData)
+			api.sendRequest(getBaseUrl("/api/send/2"), "POST", formData)
 				.then(response => {
 					if (response && response.status && response.message) {
 						returnAlert(response.message, response.status === "HTTP_ACCEPTED" ? "success" : "warning");
