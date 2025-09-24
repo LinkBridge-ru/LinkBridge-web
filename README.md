@@ -26,6 +26,33 @@ LinkBridge supports:
 
 ---
 
+## 🐳 Docker Installation
+
+```shell
+mkdir -p /srv/linkbridge_app ;
+cd /srv/linkbridge_app ;
+```
+
+Download LinkBridge App
+
+```shell
+git clone https://github.com/LinkBridge-ru/LinkBridge-web.git . ;
+```
+
+And run the Application
+
+> [!NOTE]
+> Please note:
+> 1. The first launch may take a long time.
+> 2. To use the application, it is recommended to use a Level 2 and 3 domain name with an SSL certificate.
+> You can use the reverse proxy.
+
+```shell
+docker compose up -d --build
+```
+
+Done. Your application is running on the specified port in `docker-compose.yaml`. (`8808`)
+
 ## ⚙️ Installation
 
 The application requires PHP >= 8.2.
