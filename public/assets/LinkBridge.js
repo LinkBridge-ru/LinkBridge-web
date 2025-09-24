@@ -86,56 +86,6 @@ function LinkBridgeFetchLink(pin) {
 }
 
 /**
- * @deprecated Метод отправки ссылки.
- */
-function LinkBridgeSendLink() {
-	const create_alert = document.getElementById("BridgeAlert");
-
-	function returnAlert(text, type = "info") {
-		create_alert.innerHTML = '<p class="lb-alert-' + type + ' text-uppercase">' + text + '</p>';
-	}
-
-	document.addEventListener("DOMContentLoaded", function () {
-		const sendButton = document.getElementById("send-button");
-		const pinInput = document.getElementById("pin");
-		const urlInput = document.getElementById("url");
-
-		sendButton.addEventListener("click", function (_el) {
-			_el.preventDefault();
-			formData.append("pin", pinInput.value);
-			formData.append("url", urlInput.value);
-
-			api.sendRequest(getBaseUrl("/api/send/2"), "POST", formData)
-				.then(response => {
-					if (response && response.status && response.message) {
-						returnAlert(response.message, response.status === "HTTP_ACCEPTED" ? "success" : "warning");
-						pinInput.value = "";
-						urlInput.value = "";
-						pinInput.focus();
-						setTimeout(function () {
-							window.location.href = window.location.protocol + "//" + window.location.hostname;
-						}, 3000);
-					} else {
-						returnAlert("Unknown Error", "danger");
-					}
-				})
-				.catch(error => {
-					returnAlert(error, "danger");
-				});
-		});
-
-		[pinInput, urlInput].forEach(input => {
-			input.addEventListener("keydown", function (e) {
-				if (e.key === "Enter" || e.code === "NumpadEnter") {
-					e.preventDefault();
-					sendButton.click();
-				}
-			});
-		});
-	});
-}
-
-/**
  * Ожидаем нажатие на #pin-copy.
  */
 document.addEventListener("DOMContentLoaded", () => {
