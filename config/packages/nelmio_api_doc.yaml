@@ -3,7 +3,7 @@ nelmio_api_doc:
         info:
             title: '%env(THIS_PROJECT_NAME)%'
             description: "LinkBridge is a service that allows you to send a link from your device to any other device with a browser."
-            version: '%env(THIS_PROJECT_VERSION)%'
+            version: "%env(default::THIS_PROJECT_VERSION)%"
     areas: # to filter documented areas
         path_patterns:
             - ^/api(?!/doc$) # Accepts routes under /api except /api/doc

@@ -29,7 +29,7 @@ class PublicTwigExtension extends AbstractExtension implements GlobalsInterface
 			"getLang" => $this->request->getCurrentRequest() ? $this->request->getCurrentRequest()->getLocale() : "??",
 			"getCurrentYear" => date(format: "Y"),
 			"getThisProjectName" => $_ENV["THIS_PROJECT_NAME"] ?? "LinkBridge",
-			"getThisProjectVersion" => $_ENV["THIS_PROJECT_VERSION"] ?? 6,
+			"getThisProjectVersion" => $_ENV["THIS_PROJECT_VERSION"] ?? "",
 			"getThisProjectBuildType" => $_ENV["APP_ENV"] === "dev" ? "[dev]" : "",
 		];
 	}

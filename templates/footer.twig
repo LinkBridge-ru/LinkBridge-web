@@ -72,7 +72,7 @@
 						<p class="lb-descriptions">
 							© 2018 -> {{ getCurrentYear }} – LinkBridge
 							<a class="lb-text-accent" href="https://github.com/LinkBridge-ru" target="_blank">
-								v.{{ getThisProjectVersion }} {{ getThisProjectBuildType }}
+								{{ getThisProjectVersion ? "v." ~ getThisProjectVersion }} {{ getThisProjectBuildType }}
 							</a>
 						</p>
 					</div>
