@@ -41,7 +41,7 @@ final class SendController extends AbstractController
 			$this->LinkBridgeRepo->writeLinkForRecipient($pin, $url);
 			$this->addFlash("success", "The link was sent successfully");
 		} catch (Throwable $exception) {
-			$this->addFlash("danger", "Request Error: " . $exception->getMessage());
+			$this->addFlash("danger", $exception->getMessage());
 		}
 
 		return $this->redirectToRoute("home", ["pin" => $pin]);
