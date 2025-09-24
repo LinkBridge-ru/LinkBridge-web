@@ -1,0 +1,20 @@
+services:
+
+    linkbridge_app:
+        build: .
+        container_name: linkbridge_app
+        restart: unless-stopped
+        ports:
+            - "8808:8000/tcp" # You can change port `8808` to any other one.
+
+#        environment:
+#           # Use and Edit the environment if you understand what you are doing.
+#            APP_ENV: "dev"
+#            TRUSTED_PROXIES: 127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+#            THIS_PROJECT_NAME: "LinkBridge"
+#            THIS_PROJECT_QR_VENDOR: "https://api.qrserver.com/v1/create-qr-code/?margin=20&size=300x300&data="
+#           # DataBase Settings:
+#            DATABASE_URL: "sqlite:///%kernel.project_dir%/var/linkbridge.db" # SQLite for Default.
+#            DATABASE_URL: "mysql://app:!ChangeMe!@linkbridge_db:3306/app?serverVersion=8.0.32&charset=utf8mb4" # mysql
+#            DATABASE_URL: "mysql://app:!ChangeMe!@linkbridge_db:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4" # MariaDB
+#            DATABASE_URL: "postgresql://app:!ChangeMe!@linkbridge_db:5432/app?serverVersion=16&charset=utf8" # postgresql
