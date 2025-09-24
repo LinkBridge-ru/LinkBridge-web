@@ -44,7 +44,7 @@ final class SendController extends AbstractController
 			$this->addFlash("danger", $exception->getMessage());
 		}
 
-		return $this->redirectToRoute("home", ["pin" => $pin]);
+		return $this->redirectToRoute("home");
 	}
 
 }
