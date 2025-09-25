@@ -1,0 +1,27 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appIDs": [
+                    "2QFL4STWWK.ru.iLobanov.LinkbridgeNew"
+                ],
+                "components": [
+                    {
+                        "/": "/send/*",
+                        "?": {
+                            "pin": "*",
+                            "caseSensitive": false
+                        },
+                        "caseSensitive": false,
+                        "comment": "Route for Apple AppClip"
+                    }
+                ]
+            }
+        ]
+    },
+    "appclips": {
+        "apps": [
+            "2QFL4STWWK.ru.iLobanov.LinkbridgeNew.Clip"
+        ]
+    }
+}
