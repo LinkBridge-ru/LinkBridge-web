@@ -33,7 +33,6 @@ COPY --chown=www-data:www-data . /var/www/linkbridge_app
 ENV APP_ENV=dev \
 	DATABASE_URL="sqlite:///%kernel.project_dir%/var/linkbridge.db" \
 	TRUSTED_PROXIES=127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 \
-	THIS_PROJECT_VERSION="7.1.0" \
 	THIS_PROJECT_NAME="LinkBridge" \
 	THIS_PROJECT_QR_VENDOR="https://api.qrserver.com/v1/create-qr-code/?margin=20&size=300x300&data="
 
