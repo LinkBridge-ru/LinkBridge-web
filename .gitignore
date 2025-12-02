@@ -2,6 +2,7 @@
 *.lock
 var
 vendor
+config/reference.php
 
 # ---> macOS
 # General
