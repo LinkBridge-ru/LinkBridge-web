@@ -32,7 +32,7 @@ final class SendController extends AbstractController
 		}
 
 		$url = $request->query->get("url");
-		$pin = $this->LinkBridge->sanitizePINCode($pin);
+		$pin = $this->LinkBridge->sanitizePinCode($pin);
 		if (empty($url)) return $this->render("send/index.twig", ["PIN" => $pin]);
 
 		try {
