@@ -2,12 +2,12 @@
 
 namespace App\Twig;
 
+use App\Service\LinkBridgeService;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use App\Service\LinkBridgeService;
-use Twig\Extension\GlobalsInterface;
-use Twig\Extension\AbstractExtension;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 class PublicTwigExtension extends AbstractExtension implements GlobalsInterface
 {

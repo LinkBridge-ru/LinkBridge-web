@@ -2,12 +2,12 @@
 
 namespace App\Repository;
 
-use Exception;
-use DateTimeImmutable;
 use App\Entity\LinkBridge;
+use DateTimeImmutable;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Exception;
 
 /**
  * @extends ServiceEntityRepository<LinkBridge>

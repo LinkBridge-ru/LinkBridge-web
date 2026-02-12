@@ -2,8 +2,8 @@
 
 namespace App\Service;
 
-use InvalidArgumentException;
 use App\Repository\LinkBridgeRepository;
+use InvalidArgumentException;
 
 class LinkBridgeService
 {
