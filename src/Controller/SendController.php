@@ -25,13 +25,13 @@ final class SendController extends AbstractController
 	#[Route(path: "/send", name: "send", methods: "GET")]
 	public function latest(Request $request): Response
 	{
-		$pin = $request->get("pin");
+		$pin = $request->query->get("pin");
 		if (empty($pin)) {
 			$this->addFlash("danger", "Invalid Recipient PIN");
 			return $this->redirectToRoute("home");
 		}
 
-		$url = $request->get("url");
+		$url = $request->query->get("url");
 		$pin = $this->LinkBridge->sanitizePINCode($pin);
 		if (empty($url)) return $this->render("send/index.twig", ["PIN" => $pin]);
 

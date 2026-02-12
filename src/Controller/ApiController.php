@@ -251,7 +251,7 @@ final class ApiController extends AbstractController
 
 		try {
 			# Подготавливаем PIN.
-			$pin = $this->LinkBridge->sanitizePinCode(pin: $request->get("pin"));
+			$pin = $this->LinkBridge->sanitizePinCode(pin: $request->query->get("pin"));
 
 			# Если не найден получатель.
 			if (empty($pin)) throw new Exception(
